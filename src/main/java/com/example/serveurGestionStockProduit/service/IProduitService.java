@@ -12,6 +12,6 @@ public interface IProduitService {
 
 	void updateProduit(Produit p);
 
-	void deleteProduit(String ref);
+	void deleteProduit(Long id);
 
 }
