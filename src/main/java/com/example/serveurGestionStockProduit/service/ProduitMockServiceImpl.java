@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.serveurGestionStockProduit.entity.Produit;
 
 @Service
-public class ProduitMockServiceImpl implements IProduitService {
+public class ProduitMockServiceImpl  implements ICrudService<Produit, Long> {
 
 	private List<Produit> produits;
 
@@ -22,26 +22,26 @@ public class ProduitMockServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public List<Produit> getProduits() {
+	public List<Produit> getAll() {
 		// TODO Auto-generated method stub
 		return produits;
 	}
 
 	@Override
-	public void addProduit(Produit p) {
+	public void add(Produit p) {
 		produits.add(p);
 
 	}
 
 	@Override
-	public void updateProduit(Produit p) {
+	public void update(Produit p) {
 		produits.remove(p);
 		produits.add(p);
 
 	}
 
 	@Override
-	public void deleteProduit(Long id) {
+	public void delete(Long id) {
 		Produit pr = new Produit();
 		pr.setId(id);
 		produits.remove(pr);

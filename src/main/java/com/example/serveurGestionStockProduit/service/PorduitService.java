@@ -11,31 +11,31 @@ import com.example.serveurGestionStockProduit.repository.ProduitRepository;
 
 @Service
 @Primary
-public class PorduitService implements IProduitService {
+public class PorduitService implements ICrudService<Produit, Long> {
 	
 	@Autowired
 	private ProduitRepository produitRepository;
 
 	@Override
-	public List<Produit> getProduits() {
+	public List<Produit> getAll() {
 		// TODO Auto-generated method stub
 		return produitRepository.findAll();
 	}
 
 	@Override
-	public void addProduit(Produit p) {
+	public void add(Produit p) {
 		produitRepository.save(p);
 
 	}
 
 	@Override
-	public void updateProduit(Produit p) {
+	public void update(Produit p) {
 		produitRepository.save(p);
 
 	}
 
 	@Override
-	public void deleteProduit(Long id) {
+	public void delete(Long id) {
 		Produit pr=new Produit();
 		pr.setId(id);
 		produitRepository.delete(pr);
