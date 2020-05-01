@@ -1,12 +1,17 @@
-package com.example.serveurGestionStockProduit.service;
+package com.example.serveurGestionStockProduit.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
 import com.example.serveurGestionStockProduit.entity.User;
 import com.example.serveurGestionStockProduit.repository.UserRepository;
+import com.example.serveurGestionStockProduit.service.ICrudService;
 
+@Service
+@Primary
 public class UserService implements ICrudService<User, Long> {
 
 	@Autowired
@@ -14,6 +19,7 @@ public class UserService implements ICrudService<User, Long> {
 
 	@Override
 	public List<User> getAll() {
+		System.out.println("tous les utilisateurs");
 		return userRepository.findAll();
 	}
 
@@ -35,6 +41,11 @@ public class UserService implements ICrudService<User, Long> {
 		user.setId(id);
 		userRepository.delete(user);
 
+	}
+	
+	@Override
+	public void saveAll(Iterable<User> iterable) {
+		userRepository.saveAll(iterable);
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.example.serveurGestionStockProduit.service;
+package com.example.serveurGestionStockProduit.service.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.serveurGestionStockProduit.entity.Produit;
 import com.example.serveurGestionStockProduit.repository.ProduitRepository;
+import com.example.serveurGestionStockProduit.service.ICrudService;
 
 @Service
 @Primary
@@ -41,6 +42,11 @@ public class PorduitService implements ICrudService<Produit, Long> {
 		produitRepository.delete(pr);
 	
 
+	}
+	
+	@Override
+	public void saveAll(Iterable<Produit> iterable) {
+		produitRepository.saveAll(iterable);	
 	}
 
 }

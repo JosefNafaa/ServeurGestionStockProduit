@@ -1,11 +1,13 @@
-package com.example.serveurGestionStockProduit.service;
+package com.example.serveurGestionStockProduit.service.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.example.serveurGestionStockProduit.entity.Produit;
+import com.example.serveurGestionStockProduit.service.ICrudService;
 
 @Service
 public class ProduitMockServiceImpl  implements ICrudService<Produit, Long> {
@@ -46,6 +48,13 @@ public class ProduitMockServiceImpl  implements ICrudService<Produit, Long> {
 		pr.setId(id);
 		produits.remove(pr);
 
+	}
+	@Override
+	public void saveAll(Iterable<Produit> iterable) {
+		Iterator<Produit> iterator = iterable.iterator();
+		if(iterator.hasNext()) {
+			produits.add(iterator.next());
+		}
 	}
 
 }
